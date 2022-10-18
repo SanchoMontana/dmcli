@@ -50,7 +50,6 @@ Commands:
 
 /vision_radius
   Positional Arguments:
-
     set <units>
     inc <units>
     dec <units>
