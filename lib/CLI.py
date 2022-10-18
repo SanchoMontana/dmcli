@@ -1,14 +1,7 @@
 from cmd import Cmd
-import threading
+import multiprocessing
 import GraphicsManager
 import pygame
-
-class Guess():
-    def __init__(self):
-        self.red = "Red"
-    def go(self):
-        pass
-
 
 class Console(Cmd):
     prompt = 'dmcli> '
@@ -73,9 +66,4 @@ class Console(Cmd):
         print("exiting...")
         pygame.quit()
         self.game_window = None
-        return True
-
-if __name__ == '__main__':
-    Console().cmdloop()
-    p = Console()
-    p.cmdloop()
+        exit()
