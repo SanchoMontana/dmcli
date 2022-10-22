@@ -3,3 +3,4 @@ __pycache__/
 storage
 storage/sqlite3.db
 venv/
+pkgs/pip.log
