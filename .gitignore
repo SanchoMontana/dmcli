@@ -1,6 +1,4 @@
 .idea/
 __pycache__/
-storage
-storage/sqlite3.db
+storage/*
 venv/
-pkgs/pip.log

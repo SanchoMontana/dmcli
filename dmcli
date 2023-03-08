@@ -42,9 +42,9 @@ if ! [[ -d venv ]]; then
     # Update the base venv and install required packages
     source ${SCRIPTDIR}/venv/bin/activate
     echo " - Updating pip/setuptools"
-    ${PYTHON} -m pip install --no-index --find-links ${SCRIPTDIR}/pkgs --upgrade pip setuptools wheel >> ${SCRIPTDIR}/pkgs/pip.log
+    pip3 install --upgrade pip
     echo "  - Installing packaged from requirements.txt"
-    ${PYTHON} -m pip install --no-index --find-links ${SCRIPTDIR}/pkgs --requirement requirements.txt >> ${SCRIPTDIR}/pkgs/pip.log
+    pip3 install -r requirements.txt
     deactivate
     popd > /dev/null
     PYTHON=
