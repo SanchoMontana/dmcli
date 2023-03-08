@@ -1,9 +1,8 @@
-import _queue
 import multiprocessing
 from cmd import Cmd
-from multiprocessing import Process
 import GraphicsManager
 import pygame
+import sys
 
 
 class Console(Cmd):
@@ -12,7 +11,7 @@ class Console(Cmd):
 
     def __init__(self):
         super().__init__()
-        self.multiproc_queue = multiprocessing.Queue()
+        self.pygame_state_toggle = multiprocessing.Event()
         self.game_window = None
         self.game_thread = None
         self.monsters = []
@@ -31,19 +30,11 @@ class Console(Cmd):
 
     def do_close(self, arg):
         'help'
-        try:
-            pygame_state = self.multiproc_queue.get_nowait()
-            if pygame_state == "window_quit":
-                self.game_window = None
-        except _queue.Empty:
-            pass
-
-        if self.game_window:
-            self.multiproc_queue.put("client_quit")
-            pygame.quit()
-            self.game_window = None
+        if self.pygame_state_toggle.is_set():
+            self.pygame_state_toggle.clear()
+            self.game_window.join()
         else:
-            print("Map viewer already closed.")
+            print("Map viewer already closed.", file=sys.stderr)
 
     def do_delete(self, arg):
         'help'
@@ -69,18 +60,12 @@ class Console(Cmd):
 
     def do_start(self, arg):
         'help'
-        try:
-            pygame_state = self.multiproc_queue.get_nowait()
-            if pygame_state == "window_quit":
-                self.game_window = None
-        except _queue.Empty:
-            pass
-
-        if self.game_window is None:
-            self.game_window = Process(target=GraphicsManager.GameWindow, args=(self.multiproc_queue,))
+        if not self.pygame_state_toggle.is_set():
+            self.game_window = multiprocessing.Process(target=GraphicsManager.GameWindow, args=(self.pygame_state_toggle,))
             self.game_window.start()
+            self.pygame_state_toggle.set()
         else:
-            print("Map viewer already open.")
+            print("Map viewer already open.", file=sys.stderr)
 
 
     def do_vision(self, arg):
@@ -92,9 +77,10 @@ class Console(Cmd):
     def do_exit(self, arg):
         print("exiting...")
         if self.game_window:
-            self.multiproc_queue.put("client_quit")
-            pygame.quit()
+            self.pygame_state_toggle.clear()
+            self.game_window.join()
+            pygame.quit() # TODO: do i need this
             self.game_window = None
-        pygame.quit()
+        pygame.quit() # TODO: do i need this
         self.game_window = None
         exit()

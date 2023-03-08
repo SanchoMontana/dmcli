@@ -6,8 +6,8 @@ from pyautogui import size as getScreenSize
 
 
 class GameWindow:
-    def __init__(self, multiproc_queue):
-        self.multiproc_queue = multiproc_queue
+    def __init__(self, pygame_state_toggle):
+        self.pygame_state_toggle = pygame_state_toggle
         # Get monitor resolution and set windows dimensions
         self.DISPLAY_WIDTH, self.DISPLAY_HEIGHT = getScreenSize()
         # Window initialization
@@ -20,17 +20,11 @@ class GameWindow:
         self.run()
 
     def run(self):
-        while not self.game_exit:
+        while self.pygame_state_toggle.is_set():
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    pygame.quit()
-                    self.game_exit = True
-                    self.multiproc_queue.put("window_quit")
-            try:
-                if self.multiproc_queue.get_nowait() == "client_quit":
-                    pygame.quit()
-                    self.game_exit = True
-            except _queue.Empty:
-                pass
+                    self.pygame_state_toggle.set()
+                    self.pygame_state_toggle.set()
             self.clock.tick(self.FPS)
+        pygame.quit()
         return
