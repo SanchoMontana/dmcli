@@ -46,5 +46,7 @@ CREATE TABLE IF NOT EXISTS players (
     filename TEXT NOT NULL,
     center_x INTEGER NOT NULL,
     center_y INTEGER NOT NULL,
-    radius INTEGER NOT NULL
+    radius INTEGER NOT NULL,
+    max_health INTEGER NOT NULL,
+    current_heath INTEGER DEFAULT max_health
 );"""

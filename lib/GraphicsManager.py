@@ -3,7 +3,9 @@ import os
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
 import pygame
 from pyautogui import size as getScreenSize
+import multiprocessing
 
+PYGAME_STATE_TOGGLE = multiprocessing.Event()
 
 class GameWindow:
     def __init__(self, pygame_state_toggle):

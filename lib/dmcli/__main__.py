@@ -11,7 +11,6 @@ from CLI import Console
 from db import DataStore
 
 db = DataStore.DataStore(sys.argv[1])
-Console().cmdloop()
-p = Console()
+p = Console(sys.argv[1])
 p.cmdloop()
 exit()
