@@ -23,21 +23,13 @@ class Console(Cmd):
 
     def preloop(self):
         # Dynamically create commands from actions/commands
-
         for name in [n for n, _ in inspect.getmembers(commands, inspect.isclass)]:
             if not name.endswith("_Command"):
                 continue
             command = getattr(commands, name)
             setattr(self, 'do_' + command.title, command.do)
-            # setattr(self, 'complete_' + command.title, self.completecmd)
 
-    # def completecmd(self, text, line, beginning_index, ending_index):
-    #     words = line.split(" ")
-    #     for name in [n for n, _ in inspect.getmembers(commands, inspect.isclass)]:
-    #         if not name.endswith("_Command"):
-    #             continue
-    #         if words[0] == name.split('_')[0].lower():
-    #             command_class = getattr(commands, name)
-    #             options = command_class.options
-    #             return options
-    #     return options
+    def completenames(self, text, *ignored):
+        # This is so flippin pythonic...
+        all_commands = [n.split("_", 1)[0].lower() for n, _ in inspect.getmembers(commands, inspect.isclass) if n.endswith("_Command")]
+        return [a for a in all_commands if a.startswith(text)]
