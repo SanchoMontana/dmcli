@@ -1,5 +1,5 @@
-create_table_backgrounds = """
-CREATE TABLE IF NOT EXISTS backgrounds (
+create_table_background = """
+CREATE TABLE IF NOT EXISTS background (
     id INTEGER PRIMARY KEY,
     name TEXT NOT NULL,
     filename TEXT NOT NULL,
@@ -8,8 +8,8 @@ CREATE TABLE IF NOT EXISTS backgrounds (
     flip_vertical BOOLEAN DEFAULT FALSE,
     mode TEXT DEFAULT "fit"
 );"""
-create_table_characters = """
-CREATE TABLE IF NOT EXISTS characters (
+create_table_character = """
+CREATE TABLE IF NOT EXISTS character (
     id INTEGER PRIMARY KEY,
     name TEXT NOT NULL,
     filename TEXT NOT NULL,
@@ -17,8 +17,8 @@ CREATE TABLE IF NOT EXISTS characters (
     center_y INTEGER NOT NULL,
     radius INTEGER NOT NULL
 );"""
-create_table_items = """
-CREATE TABLE IF NOT EXISTS items (
+create_table_item = """
+CREATE TABLE IF NOT EXISTS item (
     id INTEGER PRIMARY KEY,
     name TEXT NOT NULL,
     filename TEXT NOT NULL,
@@ -29,8 +29,8 @@ CREATE TABLE IF NOT EXISTS items (
     grid_width INTEGER DEFAULT 0 NOT NULL,
     grid_height INTEGER DEFAULT 0 NOT NULL
 );"""
-create_table_monsters = """
-CREATE TABLE IF NOT EXISTS monsters (
+create_table_monster = """
+CREATE TABLE IF NOT EXISTS monster (
     id INTEGER PRIMARY KEY,
     name TEXT NOT NULL,
     filename TEXT NOT NULL,
@@ -39,8 +39,8 @@ CREATE TABLE IF NOT EXISTS monsters (
     radius INTEGER DEFAULT 0 NOT NULL,
     grid_diameter INTEGER DEFAULT 1 NOT NULL
 );"""
-create_table_players = """
-CREATE TABLE IF NOT EXISTS players (
+create_table_player = """
+CREATE TABLE IF NOT EXISTS player (
     id INTEGER PRIMARY KEY,
     name TEXT NOT NULL,
     filename TEXT NOT NULL,

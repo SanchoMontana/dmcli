@@ -36,11 +36,11 @@ class DataStore:
 
     def add_schema(self):
         cursor = self.conn.cursor()
-        tables = [schema.create_table_backgrounds,
-                  schema.create_table_characters,
-                  schema.create_table_items,
-                  schema.create_table_monsters,
-                  schema.create_table_players]
+        tables = [schema.create_table_background,
+                  schema.create_table_character,
+                  schema.create_table_item,
+                  schema.create_table_monster,
+                  schema.create_table_player]
         for table in tables:
             cursor.execute(table)
         self.conn.commit()
