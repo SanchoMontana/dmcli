@@ -2,7 +2,21 @@ import GraphicsManager
 import multiprocessing
 import sys
 from . import manager
-DMCLI_Manager = manager.DMCLI_Manager
+DMCLI_Manager = manager.DMCLI_Manager()
+
+"""
+Class names in this file are very important.
+In CLI.py, primary comsole commands are determined by looking at classes in this file that end with "_Command". 
+Creating another primary dmcli command, you will ffirst have to create a new class of the form:
+class NewCommand_Command:
+    title = "newcommand"
+    options = [<list of secondary commands>] # See Create_Command class for example usage
+    help = "helptext" # FTODO
+    def do(arg):
+        ... # Internal logic
+
+"""
+
 
 class Action_Command:
     title = "action"
@@ -15,6 +29,7 @@ class Background_Command:
         pass
 
 class Close_Command:
+    # FTODO: save statefile
     title = "close"
     def do(arg):
         "close the pygame instance"
@@ -25,23 +40,14 @@ class Close_Command:
 
 class Create_Command:
     title = "create"
-    options = ["background", "character", "item", "monster", "player"]
     help = "Creates a [monster, background, item, player, character]."
     def do(arg):
-        DMCLI_Manager.create_thing(arg)
+        DMCLI_Manager.create(arg)
 
 class Delete_Command:
     title = "delete"
     def do(arg):
         pass
-
-class Exit_Command:
-    title = "exit"
-    help = "close dmcli and any existing game window"
-    def do(arg):
-        print("exiting...")
-        GraphicsManager.PYGAME_STATE_TOGGLE.clear()
-        exit()
 
 class Grid_Command:
     title = "grid"
@@ -68,10 +74,6 @@ class Ping_Command:
     def do(arg):
         pass
 
-class Quit_Command:
-    title="quit"
-    def do(arg):
-        Exit_Command.do(arg)
 
 class Start_Command:
     title = "start"
@@ -88,3 +90,6 @@ class Vision_Command:
     title = "vision"
     def do(arg):
         pass
+
+
+# TODO: Maybe create a player command to manage leveling up characters, health adjustments... Either only things in the DB or all things including movement etc.
