@@ -36,38 +36,42 @@ class Create_Command:
     # Background
     create_background.add_argument("name", type=str, help="The name of the background to be submitted.")
     create_background.add_argument("-f", "--filename", completer=Cmd.path_complete, required=True, type=str, help="Filepath of the image to be used as a background")
-    create_background.add_argument("-m", "--mode", type=str, choices=["fit", "fill", "stretch"], default="fit",
-                            help="Mode of which the background snaps to the dimensions of the screen if the image dimentions do not exactly match the dimentions of the screen")
+    create_background.add_argument("-m", "--mode", type=str, choices=["fit", "fill", "stretch"], default="fit", help="Mode of which the background snaps to the dimensions of the screen if the image dimentions do not exactly match the dimentions of the screen")
 
     # Character
     create_character.add_argument("name", type=str, help="The name of the character to be submitted.")
     create_character.add_argument("-f", "--filename", completer=Cmd.path_complete, required=True, type=str, help="Filename of the image to be used as the character chit.")
-    create_character.add_argument("-r", "--radius", type=int, default=0, help="Radius of character chit.")
+    create_character.add_argument("-z", "--zoom", type=float, default=1, help="Resolution factor of of character chit.")
     create_character.add_argument("-x", "--x-center", type=int, default=0, help="Location of the desired center of the image (x-axis).")
     create_character.add_argument("-y", "--y-center", type=int, default=0, help="Location of the desired center of the image (y-axis).")
+    create_character.add_argument("-p", "--preview", action="store_true", help="If flag is set, this will not insert chit to database, but instead give a preview of what the chit would look like.")
 
     # Item
     create_item.add_argument("name", type=str, help="The name of the item to be submitted.")
     create_item.add_argument("-f", "--filename", completer=Cmd.path_complete, required=True, type=str, help="Filename of the image to be used as the item chit.")
-    create_item.add_argument("-r", "--radius", type=int, default=0, help="Radius of item chit.")
+    create_item.add_argument("-z", "--zoom", type=float, default=1, help="Resolution factor of of item chit.")
     create_item.add_argument("-x", "--x-center", type=int, default=0, help="Location of the desired center of the image (x-axis).")
     create_item.add_argument("-y", "--y-center", type=int, default=0, help="Location of the desired center of the image (y-axis).")
     create_item.add_argument("-d", "--grid-diameter", type=int, default=1, help="Diameter of item chit measured in grid units.")
+    create_item.add_argument("-p", "--preview", action="store_true", help="If flag is set, this will not insert chit to database, but instead give a preview of what the chit would look like.")
+
 
     # Monster
     create_monster.add_argument("name", type=str, help="The name of the monster to be submitted.")
     create_monster.add_argument("-f", "--filename", completer=Cmd.path_complete, required=True, type=str, help="Filename of the image to be used as the monster chit.")
-    create_monster.add_argument("-r", "--radius", type=int, default=0, help="Radius of monster chit.")
+    create_monster.add_argument("-z", "--zoom", type=float, default=1, help="Resolution factor of of monster chit.")
     create_monster.add_argument("-x", "--x-center", type=int, default=0, help="Location of the desired center of the image (x-axis).")
     create_monster.add_argument("-y", "--y-center", type=int, default=0, help="Location of the desired center of the image (y-axis).")
     create_monster.add_argument("-d", "--grid-diameter", type=int, default=1, help="Diameter of item chit measured in grid units.")
+    create_monster.add_argument("-p", "--preview", action="store_true", help="If flag is set, this will not insert chit to database, but instead give a preview of what the chit would look like.")
 
     # Player
     create_player.add_argument("name", type=str, help="The name of the player to be submitted.")
     create_player.add_argument("-f", "--filename", completer=Cmd.path_complete, required=True, type=str, help="Filename of the image to be used as the player chit.")
-    create_player.add_argument("-r", "--radius", type=int, default=0, help="Radius of player chit.")
+    create_player.add_argument("-z", "--zoom", type=float, default=1, help="Resolution factor of of player chit.")
     create_player.add_argument("-x", "--x-center", type=int, default=0, help="Location of the desired center of the image (x-axis).")
     create_player.add_argument("-y", "--y-center", type=int, default=0, help="Location of the desired center of the image (y-axis).")
+    create_player.add_argument("-p", "--preview", action="store_true", help="If flag is set, this will not insert chit to database, but instead give a preview of what the chit would look like.")
 
 
 """
