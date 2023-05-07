@@ -10,7 +10,7 @@ class DataStore:
         self.db_filename = "sqlite3.db"
         self.db_parent_dir = os.path.join(self.working_dir, "storage")
         self.path_to_db_file = os.path.join(self.db_parent_dir, self.db_filename)
-        self.sub_folders = ["backgrounds", "characters", "items", "monsters", "players"]
+        self.sub_folders = ["background", "character", "item", "monster", "player"]
         self.verify_db()
         self.verify_folders()
 

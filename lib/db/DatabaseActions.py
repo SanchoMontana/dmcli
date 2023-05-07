@@ -13,12 +13,11 @@ class DB:
         return results.fetchall()
     
     def add_table_object(self, table, **kwargs):
-        print(table)
-        key_vals = list(kwargs.items())
-        key_vals.sort()
-        base = "INSERT INTO {}({})".format(table, key_vals)
-        print(base)
-        return
+        data = list(kwargs.items())
+        db_cmd = "INSERT INTO {}({}) VALUES ({})".format(table, ", ".join([str(key[0]) for key in data]) , ", ".join([str(key[1]) for key in data]))
+        ret = self.cur.execute(db_cmd)
+        self.conn.commit()
+        return ret
 
     def remove_table_object(self, table, **kwargs):
         db_cmd = "DELETE FROM {} ".format(table)

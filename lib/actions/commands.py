@@ -42,32 +42,32 @@ class Create_Command:
     # Character
     create_character.add_argument("name", type=str, help="The name of the character to be submitted.")
     create_character.add_argument("-f", "--filename", completer=Cmd.path_complete, required=True, type=str, help="Filename of the image to be used as the character chit.")
-    create_character.add_argument("-r", "--radius", type=int, help="Radius of character chit.")
-    create_character.add_argument("-x", "--x-center", type=int, help="Location of the desired center of the image (x-axis).")
-    create_character.add_argument("-y", "--y-center", type=int, help="Location of the desired center of the image (y-axis).")
+    create_character.add_argument("-r", "--radius", type=int, default=0, help="Radius of character chit.")
+    create_character.add_argument("-x", "--x-center", type=int, default=0, help="Location of the desired center of the image (x-axis).")
+    create_character.add_argument("-y", "--y-center", type=int, default=0, help="Location of the desired center of the image (y-axis).")
 
     # Item
     create_item.add_argument("name", type=str, help="The name of the item to be submitted.")
     create_item.add_argument("-f", "--filename", completer=Cmd.path_complete, required=True, type=str, help="Filename of the image to be used as the item chit.")
-    create_item.add_argument("-r", "--radius", type=int, help="Radius of item chit.")
-    create_item.add_argument("-x", "--x-center", type=int, help="Location of the desired center of the image (x-axis).")
-    create_item.add_argument("-y", "--y-center", type=int, help="Location of the desired center of the image (y-axis).")
-    create_item.add_argument("-d", "--grid-diameter", type=int, help="Diameter of item chit measured in grid units.")
+    create_item.add_argument("-r", "--radius", type=int, default=0, help="Radius of item chit.")
+    create_item.add_argument("-x", "--x-center", type=int, default=0, help="Location of the desired center of the image (x-axis).")
+    create_item.add_argument("-y", "--y-center", type=int, default=0, help="Location of the desired center of the image (y-axis).")
+    create_item.add_argument("-d", "--grid-diameter", type=int, default=1, help="Diameter of item chit measured in grid units.")
 
     # Monster
     create_monster.add_argument("name", type=str, help="The name of the monster to be submitted.")
     create_monster.add_argument("-f", "--filename", completer=Cmd.path_complete, required=True, type=str, help="Filename of the image to be used as the monster chit.")
-    create_monster.add_argument("-r", "--radius", type=int, help="Radius of monster chit.")
-    create_monster.add_argument("-x", "--x-center", type=int, help="Location of the desired center of the image (x-axis).")
-    create_monster.add_argument("-y", "--y-center", type=int, help="Location of the desired center of the image (y-axis).")
-    create_monster.add_argument("-d", "--grid-diameter", type=int, help="Diameter of item chit measured in grid units.")
+    create_monster.add_argument("-r", "--radius", type=int, default=0, help="Radius of monster chit.")
+    create_monster.add_argument("-x", "--x-center", type=int, default=0, help="Location of the desired center of the image (x-axis).")
+    create_monster.add_argument("-y", "--y-center", type=int, default=0, help="Location of the desired center of the image (y-axis).")
+    create_monster.add_argument("-d", "--grid-diameter", type=int, default=1, help="Diameter of item chit measured in grid units.")
 
     # Player
     create_player.add_argument("name", type=str, help="The name of the player to be submitted.")
     create_player.add_argument("-f", "--filename", completer=Cmd.path_complete, required=True, type=str, help="Filename of the image to be used as the player chit.")
-    create_player.add_argument("-r", "--radius", type=int, help="Radius of player chit.")
-    create_player.add_argument("-x", "--x-center", type=int, help="Location of the desired center of the image (x-axis).")
-    create_player.add_argument("-y", "--y-center", type=int, help="Location of the desired center of the image (y-axis).")
+    create_player.add_argument("-r", "--radius", type=int, default=0, help="Radius of player chit.")
+    create_player.add_argument("-x", "--x-center", type=int, default=0, help="Location of the desired center of the image (x-axis).")
+    create_player.add_argument("-y", "--y-center", type=int, default=0, help="Location of the desired center of the image (y-axis).")
 
 
 """

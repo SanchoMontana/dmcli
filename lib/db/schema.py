@@ -13,8 +13,8 @@ CREATE TABLE IF NOT EXISTS character (
     id INTEGER PRIMARY KEY,
     name TEXT NOT NULL,
     filename TEXT NOT NULL,
-    center_x INTEGER NOT NULL,
-    center_y INTEGER NOT NULL,
+    x_center INTEGER NOT NULL,
+    y_center INTEGER NOT NULL,
     radius INTEGER NOT NULL
 );"""
 create_table_item = """
@@ -23,8 +23,8 @@ CREATE TABLE IF NOT EXISTS item (
     name TEXT NOT NULL,
     filename TEXT NOT NULL,
     token BOOLEAN NOT NULL,
-    center_x INTEGER DEFAULT 0 NOT NULL,
-    center_y INTEGER DEFAULT 0 NOT NULL,
+    x_center INTEGER DEFAULT 0 NOT NULL,
+    y_center INTEGER DEFAULT 0 NOT NULL,
     radius INTEGER DEFAULT 0 NOT NULL,
     grid_diameter INTEGER DEFAULT 1 NOT NULL
 );"""
@@ -33,8 +33,8 @@ CREATE TABLE IF NOT EXISTS monster (
     id INTEGER PRIMARY KEY,
     name TEXT NOT NULL,
     filename TEXT NOT NULL,
-    center_x INTEGER DEFAULT 0 NOT NULL,
-    center_y INTEGER DEFAULT 0 NOT NULL,
+    x_center INTEGER DEFAULT 0 NOT NULL,
+    y_center INTEGER DEFAULT 0 NOT NULL,
     radius INTEGER DEFAULT 0 NOT NULL,
     grid_diameter INTEGER DEFAULT 1 NOT NULL
 );"""
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS player (
     id INTEGER PRIMARY KEY,
     name TEXT NOT NULL,
     filename TEXT NOT NULL,
-    center_x INTEGER DEFAULT 0 NOT NULL,
-    center_y INTEGER DEFAULT 0 NOT NULL,
+    x_center INTEGER DEFAULT 0 NOT NULL,
+    y_center INTEGER DEFAULT 0 NOT NULL,
     radius INTEGER DEFAULT 0 NOT NULL
 );"""
