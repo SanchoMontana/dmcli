@@ -1,7 +1,6 @@
 import multiprocessing
 import cmd2
 import GraphicsManager
-from db.DatabaseActions import DB
 import pygame
 import sys
 import inspect
@@ -13,20 +12,9 @@ from lib.actions import commands
 class Console(cmd2.Cmd):
     prompt = '(dmcli) '
     intro = "Welcome to dmcli!"
-    def __init__(self, working_dir):
-        super().__init__()
+    def __init__(self):
+        super().__init__(allow_cli_args=False)
         self.pygame_state_toggle = multiprocessing.Event()
-        self.DB = DB(working_dir)
-        self.monsters = []
-        self.pcs = []
-        self.npcs = []
-        self.items = []
-
-    def _cmdloop(self):
-        try:
-            super()._cmdloop()
-        except Exception as e:
-            pass
 
     def preloop(self):
         # Dynamically create commands from actions/commands

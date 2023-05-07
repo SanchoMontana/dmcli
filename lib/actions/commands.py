@@ -11,7 +11,7 @@ class NewCommand_Command:
     help = "helptext" # FTODO
     def do(arg):
         func = getattr(DMCLI_Manager, Create_Command.title)
-        func(namespace)
+        func(**vars(namespace))
     parser = CmdArgumentParser()
     ...
 """
@@ -22,7 +22,7 @@ class Create_Command:
     help = "Creates a [monster, background, item, player, character]."
     def do(cmd_obj, namespace):
         func = getattr(DMCLI_Manager, Create_Command.title)
-        func(namespace)
+        func(**vars(namespace))
 
     parser = Cmd2ArgumentParser()
     subparser = parser.add_subparsers(dest="create")

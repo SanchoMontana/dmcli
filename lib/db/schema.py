@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS player (
     id INTEGER PRIMARY KEY,
     name TEXT NOT NULL,
     filename TEXT NOT NULL,
-    center_x INTEGER NOT NULL,
-    center_y INTEGER NOT NULL,
-    radius INTEGER NOT NULL,
+    center_x INTEGER DEFAULT 0 NOT NULL,
+    center_y INTEGER DEFAULT 0 NOT NULL,
+    radius INTEGER DEFAULT 0 NOT NULL
 );"""
